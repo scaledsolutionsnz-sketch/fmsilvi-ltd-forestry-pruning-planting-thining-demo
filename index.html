@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>fmsilvi ltd | Forestry Pruning, Planting &amp; Thinning, Ongaonga</title>
+<meta name="description" content="fmsilvi ltd runs silviculture crews out of Ongaonga, Central Hawke's Bay. Tree planting, pruning and thinning to waste for forest blocks, woodlots and shelterbelts.">
+<meta property="og:title" content="fmsilvi ltd | Forestry Pruning, Planting &amp; Thinning, Ongaonga">
+<meta property="og:description" content="Silviculture crews based in Ongaonga, Central Hawke's Bay. Planting, pruning and thinning done to spec.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="img/hero1.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23161b17'/%3E%3Cpath d='M32 10 L18 34 H26 L14 54 H50 L38 34 H46 Z' fill='%23d95b28'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#161b17;
+  --ink-2:#1e2620;
+  --ink-3:#242e27;
+  --bone:#edece3;
+  --bone-2:#f4f3ec;
+  --accent:#b34a20;
+  --accent-deep:#933c18;
+  --accent-bright:#e0703c;
+  --txt:#20261f;
+  --txt-soft:#4d554c;
+  --txt-inv:#e9e8df;
+  --txt-inv-soft:#a9b1a6;
+  --line:rgba(22,27,23,.14);
+  --line-inv:rgba(233,232,223,.16);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+img{image-orientation:from-image;max-width:100%;display:block}
+body{
+  font-family:"Source Sans 3",sans-serif;
+  font-size:17px;line-height:1.7;color:var(--txt);
+  background:var(--bone);
+  overflow-x:hidden;
+}
+h1,h2,h3,.display{font-family:"Bebas Neue",sans-serif;font-weight:400;line-height:1.02;letter-spacing:.015em}
+a{color:inherit}
+::selection{background:var(--accent);color:#fff}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+
+/* ---------- intro overlay ---------- */
+#intro{
+  position:fixed;inset:0;z-index:200;background:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .8s var(--ease),visibility 0s .8s;
+}
+#intro .display{color:var(--txt-inv);font-size:clamp(2.2rem,6vw,4rem);opacity:0;transform:translateY(18px);animation:introTxt .7s var(--ease) .15s forwards}
+#intro .display span{color:var(--accent-bright)}
+@keyframes introTxt{to{opacity:1;transform:none}}
+body.loaded #intro{transform:translateY(-100%);visibility:hidden}
+@media (prefers-reduced-motion: reduce){
+  #intro{display:none}
+  #intro .display{animation:none}
+}
+
+/* ---------- nav ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(22,27,23,.82);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line-inv);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:66px;max-width:1160px;margin:0 auto;padding:0 24px}
+.brand{display:flex;align-items:baseline;gap:10px;text-decoration:none}
+.brand .display{font-size:1.55rem;color:var(--txt-inv)}
+.brand .display span{color:var(--accent-bright)}
+.brand small{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--txt-inv-soft)}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:var(--txt-inv);text-decoration:none;font-size:.95rem;font-weight:600;transition:color .25s}
+.nav-links a:hover{color:var(--accent-bright)}
+.nav-phone{
+  display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 16px;
+  background:var(--accent);color:#fff !important;text-decoration:none;
+  font-weight:700;font-size:.92rem;line-height:1;transition:background .25s;
+}
+.nav-phone:hover{background:var(--accent-deep);color:#fff}
+.nav-phone svg{flex:none}
+#navToggle{display:none;background:none;border:1px solid var(--line-inv);width:44px;height:44px;cursor:pointer;color:var(--txt-inv);align-items:center;justify-content:center}
+@media (max-width:860px){
+  .nav-links{
+    position:fixed;top:66px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;
+    background:var(--ink);border-bottom:1px solid var(--line-inv);
+    opacity:0;visibility:hidden;transform:translateY(-10px);pointer-events:none;
+    transition:opacity .3s var(--ease),transform .3s var(--ease),visibility 0s .3s;
+  }
+  .nav-links.open{opacity:1;visibility:visible;transform:none;pointer-events:auto;transition:opacity .3s var(--ease),transform .3s var(--ease)}
+  .nav-links li{border-top:1px solid var(--line-inv)}
+  .nav-links a{display:flex;align-items:center;padding:15px 24px}
+  .nav-links .nav-phone{margin:14px 24px 18px;justify-content:center;height:48px;padding:0 16px}
+  #navToggle{display:inline-flex}
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;min-height:100dvh;background:var(--ink);
+  display:flex;align-items:flex-end;color:var(--txt-inv);
+  overflow:hidden;
+}
+.hero-slides{position:absolute;inset:0}
+.hero-slides img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity 1.6s ease;
+  filter:saturate(.85) contrast(1.06);
+}
+.hero-slides img.on{opacity:1}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(22,27,23,.55) 0%,rgba(22,27,23,.35) 40%,rgba(22,27,23,.82) 100%);
+}
+.hero-inner{position:relative;z-index:2;width:100%;max-width:1160px;margin:0 auto;padding:120px 24px 72px}
+.hero-eyebrow{
+  display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--txt-inv);border-left:3px solid var(--accent-bright);padding-left:12px;margin-bottom:20px;
+}
+.hero h1{font-size:clamp(3.5rem,7.5vw,6rem);max-width:16ch;color:#fff}
+.hero p.lead{max-width:46ch;margin:20px 0 30px;font-size:1.1rem;color:var(--txt-inv)}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:52px;padding:0 28px;font-family:"Source Sans 3",sans-serif;
+  font-size:1rem;font-weight:700;text-decoration:none;cursor:pointer;border:none;line-height:1;
+  transition:background .25s,color .25s,transform .15s;
+}
+.btn:active{transform:translateY(1px)}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-accent:hover{background:var(--accent-deep)}
+.btn-ghost-inv{background:transparent;color:#fff;border:1px solid rgba(233,232,223,.5)}
+.btn-ghost-inv:hover{border-color:#fff;background:rgba(233,232,223,.1)}
+.btn-dark{background:var(--ink);color:var(--txt-inv)}
+.btn-dark:hover{background:var(--ink-3)}
+.hero-review{
+  margin-top:34px;max-width:430px;
+  background:rgba(233,232,223,.09);
+  border:1px solid rgba(233,232,223,.22);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  padding:18px 20px;position:relative;
+}
+.hero-review .stars{color:var(--accent-bright);display:flex;gap:3px;margin-bottom:8px}
+.hero-review blockquote{font-size:.98rem;line-height:1.55;color:var(--txt-inv);min-height:74px}
+.hero-review cite{display:block;margin-top:8px;font-style:normal;font-weight:700;font-size:.85rem;color:var(--txt-inv-soft)}
+.hero-review .tag{
+  position:absolute;top:-12px;right:14px;background:var(--ink);border:1px solid rgba(233,232,223,.22);
+  font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--txt-inv-soft);
+  padding:3px 10px;
+}
+.hero-review .quote-box{transition:opacity .5s ease}
+.hero-review .quote-box.fade{opacity:0}
+
+/* ---------- sections ---------- */
+section{padding:96px 0}
+.sec-head{max-width:640px;margin-bottom:56px}
+.sec-head h2{font-size:clamp(2.4rem,4.5vw,3.6rem);color:var(--ink)}
+.sec-head p{margin-top:14px;color:var(--txt-soft)}
+.dark{background:var(--ink);color:var(--txt-inv)}
+.dark .sec-head h2{color:#fff}
+.dark .sec-head p{color:var(--txt-inv-soft)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* ---------- services ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.svc{background:var(--bone-2);border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.svc:hover{transform:translateY(-6px);box-shadow:0 18px 40px -18px rgba(22,27,23,.35)}
+.svc figure{aspect-ratio:4/3;overflow:hidden;position:relative}
+.svc figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,27,23,0) 55%,rgba(22,27,23,.35) 100%)}
+.svc img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.06);transition:transform .6s var(--ease)}
+.svc:hover img{transform:scale(1.05)}
+.svc-body{padding:24px 24px 28px}
+.svc-label{display:flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.svc-label svg{flex:none}
+.svc h3{font-size:1.7rem;margin-bottom:8px;color:var(--ink)}
+.svc p{font-size:.97rem;color:var(--txt-soft)}
+@media (max-width:960px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.svc-grid{grid-template-columns:1fr}}
+
+/* ---------- about ---------- */
+.about{background:var(--bone-2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about-photo{position:relative}
+.about-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:saturate(.85) contrast(1.06)}
+.about-photo::before{
+  content:"ONGAONGA · CHB";position:absolute;top:0;left:0;z-index:2;
+  background:var(--accent);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.16em;
+  padding:8px 14px;
+}
+.about-copy h2{font-size:clamp(2.4rem,4.5vw,3.4rem);color:var(--ink);margin-bottom:18px}
+.about-copy p{color:var(--txt-soft);margin-bottom:14px}
+.about-list{list-style:none;margin-top:26px;display:grid;gap:14px}
+.about-list li{display:flex;gap:12px;align-items:flex-start;font-weight:600;color:var(--txt)}
+.about-list svg{flex:none;color:var(--accent);margin-top:3px}
+@media (max-width:860px){.about-grid{grid-template-columns:1fr;gap:36px}}
+
+/* ---------- crew ---------- */
+.crew-note{
+  display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--txt-inv-soft);border:1px solid var(--line-inv);padding:5px 12px;margin-bottom:18px;
+}
+.crew-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-inv);border:1px solid var(--line-inv)}
+.crew-card{background:var(--ink-2);padding:38px 30px;display:flex;flex-direction:column;align-items:flex-start;gap:16px;transition:background .3s}
+.crew-card:hover{background:var(--ink-3)}
+.avatar{
+  width:72px;height:72px;border-radius:50%;
+  background:var(--ink);border:2px solid var(--accent-bright);
+  display:flex;align-items:center;justify-content:center;
+  font-family:"Bebas Neue",sans-serif;font-size:1.6rem;color:var(--txt-inv);letter-spacing:.05em;
+}
+.crew-card h3{font-size:1.5rem;color:#fff}
+.crew-card .role{font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-bright);margin-top:-10px}
+.crew-card p{font-size:.95rem;color:var(--txt-inv-soft)}
+@media (max-width:860px){.crew-row{grid-template-columns:1fr}}
+
+/* ---------- reviews ---------- */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-bottom:44px}
+.rev-card{background:var(--bone-2);border:1px solid var(--line);padding:30px 28px;position:relative}
+.rev-card:nth-child(2){transform:translateY(22px)}
+.rev-card .stars{display:flex;gap:3px;color:var(--accent);margin-bottom:14px}
+.rev-card blockquote{font-size:1rem;color:var(--txt);line-height:1.65}
+.rev-card cite{display:block;margin-top:16px;font-style:normal;font-weight:700;font-size:.9rem;color:var(--txt-soft)}
+.rev-badge{
+  display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--txt-soft);border:1px solid var(--line);padding:5px 12px;margin-bottom:18px;
+}
+.rev-actions{display:flex;flex-wrap:wrap;gap:14px}
+@media (max-width:960px){.rev-grid{grid-template-columns:1fr;gap:18px}.rev-card:nth-child(2){transform:none}}
+
+/* ---------- review banner ---------- */
+.banner{background:var(--ink);padding:72px 0}
+.banner-inner{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.banner h2{font-size:clamp(2.2rem,4vw,3.2rem);color:#fff;max-width:18ch}
+.banner p{color:var(--txt-inv-soft);margin-top:8px;max-width:44ch}
+@media (max-width:720px){.banner-inner{flex-direction:column;align-items:flex-start}}
+
+/* ---------- contact ---------- */
+.contact{background:var(--bone-2)}
+.contact-card{
+  display:grid;grid-template-columns:1fr 1fr;background:var(--ink);color:var(--txt-inv);
+  border:1px solid var(--line);min-height:520px;
+}
+.contact-map{position:relative;min-height:320px}
+.contact-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.25) contrast(1.05)}
+.contact-body{padding:48px 44px;display:flex;flex-direction:column;gap:22px}
+.contact-body h2{font-size:clamp(2.2rem,3.5vw,3rem);color:#fff}
+.contact-body>p{color:var(--txt-inv-soft);margin-top:-8px}
+.contact-btns{display:grid;gap:12px}
+.contact-btns .btn{width:100%}
+.btn-outline-inv{background:transparent;color:#fff;border:1px solid rgba(233,232,223,.4)}
+.btn-outline-inv:hover{border-color:#fff;background:rgba(233,232,223,.08)}
+.contact-rows{display:grid;gap:14px;margin-top:4px}
+.contact-rows a{text-decoration:none}
+.c-row{display:flex;gap:14px;align-items:flex-start}
+.c-row svg{flex:none;color:var(--accent-bright);margin-top:3px}
+.c-row .lbl{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--txt-inv-soft)}
+.c-row .val{font-weight:600;color:var(--txt-inv)}
+.socials{display:flex;gap:12px;margin-top:6px}
+.socials a{
+  width:44px;height:44px;border:1px solid var(--line-inv);display:flex;align-items:center;justify-content:center;
+  color:var(--txt-inv);transition:border-color .25s,color .25s,background .25s;
+}
+.socials a:hover{border-color:var(--accent-bright);color:var(--accent-bright)}
+@media (max-width:860px){
+  .contact-card{grid-template-columns:1fr}
+  .contact-map{order:2;min-height:300px}
+  .contact-body{order:1;padding:36px 26px}
+}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);border-top:1px solid var(--line-inv);padding:56px 0 34px;color:var(--txt-inv)}
+.foot-grid{display:flex;justify-content:space-between;gap:36px;flex-wrap:wrap;margin-bottom:40px}
+.foot-brand .display{font-size:1.8rem;color:#fff}
+.foot-brand .display span{color:var(--accent-bright)}
+.foot-brand p{color:var(--txt-inv-soft);font-size:.92rem;max-width:32ch;margin-top:8px}
+.foot-col h3{font-size:1.1rem;letter-spacing:.08em;color:#fff;margin-bottom:14px}
+.foot-col ul{list-style:none;display:grid;gap:9px}
+.foot-col a{color:var(--txt-inv-soft);text-decoration:none;font-size:.94rem;transition:color .25s}
+.foot-col a:hover{color:var(--accent-bright)}
+.foot-base{border-top:1px solid var(--line-inv);padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.85rem;color:var(--txt-inv-soft)}
+</style>
+</head>
+<body>
+
+<div id="intro" aria-hidden="true"><span class="display">FMSILVI <span>LTD</span></span></div>
+
+<header>
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="#top">
+      <span class="display">FMSILVI <span>LTD</span></span>
+      <small>Forestry</small>
+    </a>
+    <button id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a class="nav-phone" href="tel:+64273410107">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        027 341 0107</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Introduction" style="padding:0">
+    <div class="hero-slides" aria-hidden="true">
+      <img src="img/hero1.jpg" alt="" class="on" fetchpriority="high" width="1800" height="1200">
+      <img src="img/fog.jpg" alt="" loading="lazy" width="1800" height="1350">
+      <img src="img/hero3.jpg" alt="" loading="lazy" width="1800" height="1200">
+    </div>
+    <div class="hero-inner">
+      <span class="hero-eyebrow">Ongaonga · Central Hawke's Bay</span>
+      <h1>Pruning, planting &amp; thinning crews for Hawke's Bay forest blocks</h1>
+      <p class="lead">fmsilvi ltd runs silviculture crews out of Ongaonga. Blocks planted, pruned and thinned to spec, on the dates we agree.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-accent" href="tel:+64273410107">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call 027 341 0107</a>
+        <a class="btn btn-ghost-inv" href="#contact">Get a quote</a>
+      </div>
+      <div class="hero-review" id="heroReview">
+        <span class="tag">Example reviews</span>
+        <div class="quote-box">
+          <div class="stars" aria-hidden="true"></div>
+          <blockquote id="heroQuote"></blockquote>
+          <cite id="heroCite"></cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <h2>What we do on the block</h2>
+        <p>Silviculture is the whole job here. One crew, the full rotation: from bare land to a pruned, thinned stand that is worth harvesting.</p>
+      </div>
+      <div class="svc-grid">
+        <article class="svc rv">
+          <figure><img src="img/plant.jpg" alt="Hands holding a seedling ready for planting" loading="lazy" width="800" height="600"></figure>
+          <div class="svc-body">
+            <span class="svc-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V8"/><path d="M12 8C12 5 9 2 5 2c0 4 3 7 7 6z"/><path d="M12 12c0-3 3-6 7-6 0 4-3 7-7 6z"/></svg>Establishment</span>
+            <h3>Tree planting</h3>
+            <p>Radiata and natives in the ground at the right spacing, in the right season. Stocking rates hit the target, not just near it.</p>
+          </div>
+        </article>
+        <article class="svc rv">
+          <figure><img src="img/pines.jpg" alt="Pruned pine stems seen from the forest floor" loading="lazy" width="800" height="600"></figure>
+          <div class="svc-body">
+            <span class="svc-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.1 8.1 20 20M8.1 15.9 20 4"/></svg>Tending</span>
+            <h3>Pruning</h3>
+            <p>Clean lift pruning, cut flush and tidy. Clearwood is where the money sits at harvest, so every pass counts.</p>
+          </div>
+        </article>
+        <article class="svc rv">
+          <figure><img src="img/forest-road.jpg" alt="Open stand of tall trees after thinning" loading="lazy" width="800" height="600"></figure>
+          <div class="svc-body">
+            <span class="svc-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4 4 20M20 8 12 20M8 4 6 8"/></svg>Tending</span>
+            <h3>Thinning to waste</h3>
+            <p>Final crop stems picked, the rest dropped. Your stand ends up at the stocking your forestry plan calls for.</p>
+          </div>
+        </article>
+        <article class="svc rv">
+          <figure><img src="img/canopy.jpg" alt="Mature shelter tree standing in open pasture" loading="lazy" width="800" height="600"></figure>
+          <div class="svc-body">
+            <span class="svc-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M12 20V10"/><path d="M12 10c-4 0-6-3-6-7 5 0 8 2 8 7"/><path d="M12 12c3 0 5-2 5-6-4 0-6 2-6 6"/></svg>Farm forestry</span>
+            <h3>Woodlots &amp; shelterbelts</h3>
+            <p>Small farm woodlots and shelterbelts pruned and kept in shape. The jobs bigger outfits will not drive out for.</p>
+          </div>
+        </article>
+        <article class="svc rv">
+          <figure><img src="img/hero2.jpg" alt="Young conifers on hill country at dusk" loading="lazy" width="800" height="600"></figure>
+          <div class="svc-body">
+            <span class="svc-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21 12 3l9 18H3z"/><path d="M12 12v5"/></svg>Establishment</span>
+            <h3>New forest blocks</h3>
+            <p>Turning a paddock or retired hill face into a forest. We work to your plan from land prep through to first tending.</p>
+          </div>
+        </article>
+        <article class="svc rv">
+          <figure><img src="img/tall.jpg" alt="Looking up through a mature tree canopy" loading="lazy" width="800" height="600"></figure>
+          <div class="svc-body">
+            <span class="svc-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Contracting</span>
+            <h3>Crew contracting</h3>
+            <p>Crews for forest managers who need planting or tending covered across bigger estates. Priced by the hectare or the day.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <div class="wrap about-grid">
+      <div class="about-photo rv">
+        <img src="img/trail.jpg" alt="Thinned young pine stand with morning light coming through" loading="lazy" width="1600" height="1200">
+      </div>
+      <div class="about-copy rv">
+        <h2>A local crew, not a call centre</h2>
+        <p>fmsilvi ltd works out of Ongaonga, doing silviculture for forest owners across Central Hawke's Bay and beyond. Planting, pruning and thinning is all we do, and we do it in most weather.</p>
+        <p>You deal with the people doing the work. Ring, describe the block, and you will get a straight answer on whether we can take it on and what it will cost.</p>
+        <ul class="about-list">
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Based in Ongaonga, working across Central Hawke's Bay</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Clear quotes before boots hit the block</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Work done to your forestry plan, checked before we leave</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREW -->
+  <section id="crew" class="dark">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="crew-note">Example team</span>
+        <h2>The crew</h2>
+        <p>Roles shown as a guide while we load in the real team. The photos and names on the live site will be your own.</p>
+      </div>
+      <div class="crew-row rv">
+        <div class="crew-card">
+          <div class="avatar">FM</div>
+          <h3>Owner / Crew boss</h3>
+          <span class="role">Runs every job</span>
+          <p>Quotes the work, sets the standard on the block and checks the last row before anyone drives home.</p>
+        </div>
+        <div class="crew-card">
+          <div class="avatar">SL</div>
+          <h3>Silviculture lead</h3>
+          <span class="role">Pruning &amp; thinning</span>
+          <p>Keeps the pruning lifts clean and the thinning selections honest, stem by stem.</p>
+        </div>
+        <div class="crew-card">
+          <div class="avatar">PC</div>
+          <h3>Planting crew</h3>
+          <span class="role">Winter season</span>
+          <p>Puts thousands of seedlings in the ground each season at the spacing the plan asks for.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="rev-badge">Example reviews</span>
+        <h2>What forest owners say</h2>
+        <p>Shown as examples until the live Google feed is linked up.</p>
+      </div>
+      <div class="rev-grid">
+        <article class="rev-card rv">
+          <div class="stars" aria-label="5 out of 5 stars"></div>
+          <blockquote>The crew planted 8,000 seedlings for us over winter. Rows are straight, the stocking checked out, and they turned up every day they said they would.</blockquote>
+          <cite>Hamish R. · Waipukurau</cite>
+        </article>
+        <article class="rev-card rv">
+          <div class="stars" aria-label="5 out of 5 stars"></div>
+          <blockquote>Booked them for thin to waste on an old shelter block. Straight answers on price, and the job matched the quote to the dollar.</blockquote>
+          <cite>Grant M. · Tikokino</cite>
+        </article>
+        <article class="rev-card rv">
+          <div class="stars" aria-label="5 out of 5 stars"></div>
+          <blockquote>Pruned our woodlot in a day and a half. Good price, tidy cuts, and no mess left behind on the tracks.</blockquote>
+          <cite>Jill T. · Waipawa</cite>
+        </article>
+      </div>
+      <div class="rev-actions rv">
+        <a class="btn btn-dark" href="https://www.google.com/maps/search/fmsilvi+ltd+Ongaonga+Hawke%27s+Bay" target="_blank" rel="noopener">See all our Google reviews</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEW BANNER -->
+  <section class="banner" aria-label="Leave a review">
+    <div class="wrap banner-inner rv">
+      <div>
+        <h2>Happy with our work?</h2>
+        <p>A Google review helps other forest owners in the Bay find a crew they can rely on.</p>
+      </div>
+      <a class="btn btn-accent" href="https://www.google.com/maps/search/fmsilvi+ltd+Ongaonga+Hawke%27s+Bay" target="_blank" rel="noopener">Leave us a review</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <h2>Talk to us about your block</h2>
+        <p>Ring or email with rough numbers: hectares, age of the stand and where it is. We will come back with a price and a window.</p>
+      </div>
+      <div class="contact-card rv">
+        <div class="contact-map">
+          <iframe title="Map showing fmsilvi ltd in Ongaonga, Central Hawke's Bay" src="https://www.google.com/maps?q=fmsilvi%20ltd%20Ongaonga%20Hawke%27s%20Bay%20New%20Zealand&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+        <div class="contact-body">
+          <h2>Get in touch</h2>
+          <p>Phones answer on the block, so leave a message if it rings out. We call back.</p>
+          <div class="contact-btns">
+            <a class="btn btn-accent" href="tel:+64273410107">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Call fmsilvi ltd</a>
+            <a class="btn btn-outline-inv" data-gmail data-user="fmsilvi" data-domain="outlook.com" data-su="Quote%20request%20from%20the%20website" href="#contact">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="0"/><path d="m22 7-10 6L2 7"/></svg>
+              Email fmsilvi ltd</a>
+          </div>
+          <div class="contact-rows">
+            <div class="c-row">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <div><span class="lbl">Phone</span><br><a class="val" href="tel:+64273410107">027 341 0107</a></div>
+            </div>
+            <div class="c-row">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="0"/><path d="m22 7-10 6L2 7"/></svg>
+              <div><span class="lbl">Email</span><br><a class="val" data-gmail data-user="fmsilvi" data-domain="outlook.com" href="#contact"><span data-eml></span></a></div>
+            </div>
+            <div class="c-row">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div><span class="lbl">Based in</span><br><span class="val">Ongaonga, Central Hawke's Bay</span></div>
+            </div>
+          </div>
+          <div class="socials">
+            <a href="https://www.facebook.com/search/top?q=fmsilvi%20ltd" target="_blank" rel="noopener" aria-label="Find fmsilvi ltd on Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.4l.5-3h-2.9V9.1c0-.9.3-1.6 1.6-1.6h1.4V4.8c-.3 0-1.2-.1-2.2-.1-2.2 0-3.8 1.4-3.8 3.9V11H8v3h2.5v7h3z"/></svg></a>
+            <a href="https://www.instagram.com/explore/search/keyword/?q=fmsilvi" target="_blank" rel="noopener" aria-label="Find fmsilvi ltd on Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".8" fill="currentColor" stroke="none"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="display">FMSILVI <span>LTD</span></span>
+        <p>Forestry pruning, planting and thinning. Ongaonga, Central Hawke's Bay.</p>
+      </div>
+      <div class="foot-col">
+        <h3>Site</h3>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="terms.html">Terms &amp; Conditions</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h3>Follow</h3>
+        <div class="socials">
+          <a href="https://www.facebook.com/search/top?q=fmsilvi%20ltd" target="_blank" rel="noopener" aria-label="Find fmsilvi ltd on Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.4l.5-3h-2.9V9.1c0-.9.3-1.6 1.6-1.6h1.4V4.8c-.3 0-1.2-.1-2.2-.1-2.2 0-3.8 1.4-3.8 3.9V11H8v3h2.5v7h3z"/></svg></a>
+          <a href="https://www.instagram.com/explore/search/keyword/?q=fmsilvi" target="_blank" rel="noopener" aria-label="Find fmsilvi ltd on Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".8" fill="currentColor" stroke="none"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="yr"></span> fmsilvi ltd. All rights reserved.</span>
+      <span>Ongaonga, Central Hawke's Bay, New Zealand</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* intro */
+  window.addEventListener('load', function(){
+    setTimeout(function(){ document.body.classList.add('loaded'); }, reduced ? 0 : 1000);
+  });
+  setTimeout(function(){ document.body.classList.add('loaded'); }, 2600);
+
+  /* mobile nav */
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function(){
+    var open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ links.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); });
+  });
+
+  /* hero slides */
+  var slides = document.querySelectorAll('.hero-slides img');
+  var si = 0;
+  if (!reduced && slides.length > 1){
+    setInterval(function(){
+      slides[si].classList.remove('on');
+      si = (si + 1) % slides.length;
+      slides[si].classList.add('on');
+    }, 6000);
+  }
+
+  /* stars */
+  var starSvg = '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>';
+  document.querySelectorAll('.stars').forEach(function(el){ el.innerHTML = starSvg.repeat(5); });
+
+  /* hero review rotation (same data as review cards) */
+  var quotes = [
+    { t: 'The crew planted 8,000 seedlings for us over winter. Rows are straight and they turned up every day they said they would.', n: 'Hamish R. · Waipukurau' },
+    { t: 'Booked them for thin to waste on an old shelter block. Straight answers on price, and the job matched the quote.', n: 'Grant M. · Tikokino' },
+    { t: 'Pruned our woodlot in a day and a half. Good price, tidy cuts, and no mess left behind on the tracks.', n: 'Jill T. · Waipawa' }
+  ];
+  var qi = 0;
+  var qEl = document.getElementById('heroQuote');
+  var cEl = document.getElementById('heroCite');
+  var box = document.querySelector('.hero-review .quote-box');
+  function setQuote(i){ qEl.textContent = '"' + quotes[i].t + '"'; cEl.textContent = quotes[i].n; }
+  setQuote(0);
+  if (!reduced){
+    setInterval(function(){
+      box.classList.add('fade');
+      setTimeout(function(){
+        qi = (qi + 1) % quotes.length;
+        setQuote(qi);
+        box.classList.remove('fade');
+      }, 500);
+    }, 6000);
+  }
+
+  /* scroll reveal */
+  if ('IntersectionObserver' in window && !reduced){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* gmail compose links + visible address, built from parts */
+  document.querySelectorAll('a[data-gmail]').forEach(function(a){
+    var to = a.getAttribute('data-user') + '@' + a.getAttribute('data-domain');
+    a.href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(to) + '&su=' + (a.getAttribute('data-su') || '') + '&body=' + (a.getAttribute('data-body') || '');
+    a.target = '_blank'; a.rel = 'noopener';
+    var eml = a.querySelector('[data-eml]');
+    if (eml){ eml.textContent = to; }
+  });
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
