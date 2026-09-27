@@ -321,6 +321,19 @@ footer{background:var(--ink);border-top:1px solid var(--line-inv);padding:56px 0
 .hero .hero-award{margin:22px 0 0}
 @media(min-width:1000px){.hero-inner{grid-template-columns:minmax(0,1fr) 360px}.hero-review{margin-top:0}}
 @media(max-height:760px){.hero-eyebrow{margin-bottom:12px}.hero p.lead{margin:12px 0 18px;font-size:1rem;line-height:1.55}.hero .hero-award{margin-top:14px;font-size:.92rem}.btn{min-height:46px}}
+
+/* video */
+.work-video .sec-head{margin-bottom:36px}
+.vid{position:relative;max-width:980px;margin:0 auto;aspect-ratio:3/2;background:var(--ink-2);overflow:hidden}
+.vid video{display:block;width:100%;height:100%;object-fit:cover;background:#000}
+.vid-play{position:absolute;inset:0;display:grid;place-items:center;border:0;padding:0;cursor:pointer;background:linear-gradient(180deg,rgba(22,27,23,.1),rgba(22,27,23,.45))}
+.vid-play span{display:grid;place-items:center;width:88px;height:88px;border-radius:50%;background:var(--accent);color:#fff;box-shadow:0 12px 30px -10px rgba(0,0,0,.6);transition:transform .3s var(--ease),background .25s}
+.vid-play:hover span{transform:scale(1.06);background:var(--accent-deep)}
+.vid-play svg{width:34px;height:34px;margin-left:5px}
+.vid-play:focus-visible{outline:3px solid var(--accent-bright);outline-offset:-3px}
+.vid.playing .vid-play{display:none}
+.vid-note{max-width:980px;margin:14px auto 0;color:var(--txt-inv-soft);font-size:.92rem}
+@media(max-width:600px){.vid-play span{width:68px;height:68px}.vid-play svg{width:26px;height:26px}}
 </style>
 </head>
 <body>
@@ -439,6 +452,24 @@ footer{background:var(--ink);border-top:1px solid var(--line-inv);padding:56px 0
             <p>Wilding and regeneration seedlings pulled out before they crowd the crop or spread across the block.</p>
           </div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section id="video" class="dark work-video" aria-labelledby="video-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="video-title">See us at work</h2>
+        <p>A minute on the block with the crew, planting a hillside by hand.</p>
+      </div>
+      <div class="vid">
+        <video preload="none" playsinline poster="img/video-planting-poster.jpg" width="864" height="576" aria-label="Video of an FM Silvi planter planting seedlings on a hillside">
+          <source src="video/fm-silvi-planting.mp4" type="video/mp4">
+        </video>
+        <button class="vid-play" type="button" aria-label="Play the planting video">
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5z"/></svg></span>
+        </button>
       </div>
     </div>
   </section>
@@ -715,6 +746,12 @@ footer{background:var(--ink);border-top:1px solid var(--line-inv);padding:56px 0
 
   document.getElementById('yr').textContent = new Date().getFullYear();
 })();
+</script>
+<script>
+document.querySelectorAll('.vid').forEach(function(w){
+  var v=w.querySelector('video'), b=w.querySelector('.vid-play');
+  b.addEventListener('click',function(){ w.classList.add('playing'); v.controls=true; v.play(); v.focus(); });
+});
 </script>
 </body>
 </html>
