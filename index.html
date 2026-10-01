@@ -376,16 +376,22 @@ footer{background:var(--ink);border-top:1px solid var(--line-inv);padding:56px 0
 
 .training .about-photo img{aspect-ratio:4/3;max-height:none;object-fit:cover;object-position:center 40%}
 @media(min-width:861px){.training .about-grid{grid-template-columns:1fr 1fr}}
+.firefighting{background:var(--bone)}
+.firefighting .about-photo::before,.firefighting .about-photo::after{display:none}
+.firefighting .about-photo img{aspect-ratio:4/5;max-height:620px;object-fit:cover;object-position:center 50%}
+#about .about-photo img{aspect-ratio:3/2;object-position:center 45%}
+.nav-links a{white-space:nowrap}
+@media(min-width:1001px) and (max-width:1240px){.nav-links{gap:14px}.nav-links a{font-size:.88rem}}
 </style>
 </head>
 <body>
 
-<div id="intro" aria-hidden="true"><img class="fm-logo" src="img/fm-silvi-logo.png" alt="FM Silvi Ltd" width="1280" height="1280"></div>
+<div id="intro" aria-hidden="true"><img class="fm-logo" src="img/fm-silvi-logo.png" alt="FM Silvi Ltd" width="1130" height="1199"></div>
 
 <header>
   <nav class="nav" aria-label="Main">
     <a class="brand" href="#top">
-      <img class="fm-logo" src="img/fm-silvi-logo.png" alt="FM Silvi Ltd" width="1280" height="1280">
+      <img class="fm-logo" src="img/fm-silvi-logo.png" alt="FM Silvi Ltd" width="1130" height="1199">
       <span class="brand-name">FM SILVI LTD<small>Forestry crews</small></span>
     </a>
     <button id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
@@ -394,10 +400,11 @@ footer{background:var(--ink);border-top:1px solid var(--line-inv);padding:56px 0
     <ul class="nav-links" id="navLinks">
       <li><a href="#services">Services</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#team">Our team</a></li>
+      <li><a href="#team">Team</a></li>
       <li><a href="#training">Training</a></li>
+      <li><a href="#firefighting">Firefighting</a></li>
       <li><a href="#careers">Careers</a></li>
-<li><a href="#credentials">Awards &amp; certification</a></li>
+<li><a href="#credentials">Awards</a></li>
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -490,7 +497,7 @@ footer{background:var(--ink);border-top:1px solid var(--line-inv);padding:56px 0
           </div>
         </article>
         <article class="svc rv">
-          <figure><img src="img/svc-regen.jpg" alt="Two FM Silvi workers on a cutover block" loading="lazy" width="1920" height="1440"></figure>
+          <figure><img src="img/svc-regen.jpg" alt="The FM Silvi crew working across a steep regenerating hillside" loading="lazy" width="1081" height="1920"></figure>
           <div class="svc-body">
             <span class="svc-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Tending</span>
             <h3>Regen pulling</h3>
@@ -563,7 +570,20 @@ footer{background:var(--ink);border-top:1px solid var(--line-inv);padding:56px 0
         <p><a class="btn btn-accent" data-gmail data-user="anial" data-domain="fmsilvi.co.nz" data-su="Forestry%20Workers%20application" href="#contact">Apply by email</a></p>
       </div>
       <div class="about-photo rv">
+        <img src="img/field-08.jpg" alt="The FM Silvi crew ready to start at first light" loading="lazy" width="1920" height="1440">
+      </div>
+    </div>
+  </section>
+
+  <!-- FIREFIGHTING -->
+  <section id="firefighting" class="firefighting">
+    <div class="wrap about-grid">
+      <div class="about-photo rv">
         <img src="img/hiring-firefighting.jpg" alt="FM Silvi crew in fire gear hosing down a forestry site beside a digger" loading="lazy" width="1440" height="1920">
+      </div>
+      <div class="about-copy rv">
+        <h2>Firefighting</h2>
+        <p>Our crew are trained firefighters who work on forest fires. The team is on call during the fire season and have successfully helped extinguish forest fires.</p>
       </div>
     </div>
   </section>
@@ -572,7 +592,7 @@ footer{background:var(--ink);border-top:1px solid var(--line-inv);padding:56px 0
   <section id="about" class="about">
     <div class="wrap about-grid">
       <div class="about-photo rv">
-        <img src="img/about-crew.jpg" alt="The FM Silvi crew gathered by the vans at the start of a work day" loading="lazy" width="1440" height="1920">
+        <img src="img/about-team.jpg" alt="The FM Silvi team in hi-vis lined up on a forestry block" loading="lazy" width="1920" height="1200">
       </div>
       <div class="about-copy rv">
         <h2>A Hawke's Bay crew since 2018</h2>
@@ -756,7 +776,7 @@ footer{background:var(--ink);border-top:1px solid var(--line-inv);padding:56px 0
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <img class="fm-logo" src="img/fm-silvi-logo.png" alt="FM Silvi Ltd" width="1280" height="1280">
+        <img class="fm-logo" src="img/fm-silvi-logo.png" alt="FM Silvi Ltd" width="1130" height="1199">
         <p>Forestry pruning, planting and thinning. Ongaonga, Central Hawke's Bay.</p>
       </div>
       <div class="foot-col">
@@ -766,6 +786,7 @@ footer{background:var(--ink);border-top:1px solid var(--line-inv);padding:56px 0
           <li><a href="#about">About</a></li>
       <li><a href="#team">Our team</a></li>
       <li><a href="#training">Training</a></li>
+      <li><a href="#firefighting">Firefighting</a></li>
       <li><a href="#careers">Careers</a></li>
 <li><a href="#credentials">Awards &amp; certification</a></li>
           <li><a href="#reviews">Reviews</a></li>
