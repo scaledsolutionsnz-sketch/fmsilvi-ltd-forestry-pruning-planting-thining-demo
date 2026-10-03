@@ -438,7 +438,7 @@ footer{background:var(--ink);border-top:1px solid var(--line-inv);padding:56px 0
       <a class="hero-award" href="#credentials">2019 Health and Safety Silviculture Excellence Award · Hawkes Bay Region</a>
       </div>
       <div class="hero-review" id="heroReview">
-        <span class="tag">Example reviews</span>
+        <span class="tag">4.7 on Google</span>
         <div class="quote-box">
           <div class="stars" aria-hidden="true"></div>
           <blockquote id="heroQuote"></blockquote>
@@ -649,29 +649,29 @@ footer{background:var(--ink);border-top:1px solid var(--line-inv);padding:56px 0
   <section id="reviews">
     <div class="wrap">
       <div class="sec-head rv">
-        <span class="rev-badge">Example reviews</span>
-        <h2>What forest owners say</h2>
-        <p>Shown as examples until the live Google feed is linked up.</p>
+        <span class="rev-badge">Google reviews · 4.7 from 3 reviews</span>
+        <h2>What people say about the crew</h2>
+        <p>Every review from our Google listing, word for word.</p>
       </div>
       <div class="rev-grid">
         <article class="rev-card rv">
-          <div class="stars" aria-label="5 out of 5 stars"></div>
-          <blockquote>The crew planted 8,000 seedlings for us over winter. Rows are straight, the stocking checked out, and they turned up every day they said they would.</blockquote>
-          <cite>Hamish R. · Waipukurau</cite>
+          <div class="stars" data-stars="5" aria-label="5 out of 5 stars"></div>
+          <blockquote>Amazing crew great to work with really hard working</blockquote>
+          <cite>Qaeef Shaheed · Google review</cite>
         </article>
         <article class="rev-card rv">
-          <div class="stars" aria-label="5 out of 5 stars"></div>
-          <blockquote>Booked them for thin to waste on an old shelter block. Straight answers on price, and the job matched the quote to the dollar.</blockquote>
-          <cite>Grant M. · Tikokino</cite>
+          <div class="stars" data-stars="5" aria-label="5 out of 5 stars"></div>
+          <blockquote>Amazing service</blockquote>
+          <cite>Kritesh Kant · Google review</cite>
         </article>
         <article class="rev-card rv">
-          <div class="stars" aria-label="5 out of 5 stars"></div>
-          <blockquote>Pruned our woodlot in a day and a half. Good price, tidy cuts, and no mess left behind on the tracks.</blockquote>
-          <cite>Jill T. · Waipawa</cite>
+          <div class="stars" data-stars="4" aria-label="4 out of 5 stars"></div>
+          <blockquote>Good crew to deal with</blockquote>
+          <cite>Reece Roberts · Google review</cite>
         </article>
       </div>
       <div class="rev-actions rv">
-        <a class="btn btn-dark" href="https://www.google.com/maps/search/fmsilvi+ltd+Ongaonga+Hawke%27s+Bay" target="_blank" rel="noopener">See all our Google reviews</a>
+        <a class="btn btn-dark" href="https://www.google.com/search?q=fmsilvi+ltd+forestry+pruning+planting+thining+Ongaonga#lrd=0xae1670086a961203:0xdcbaac6176e60625,1" target="_blank" rel="noopener">See all our Google reviews</a>
       </div>
     </div>
   </section>
@@ -683,7 +683,7 @@ footer{background:var(--ink);border-top:1px solid var(--line-inv);padding:56px 0
         <h2>Happy with our work?</h2>
         <p>A Google review helps other forest owners in the Bay find a crew they can rely on.</p>
       </div>
-      <a class="btn btn-accent" href="https://www.google.com/maps/search/fmsilvi+ltd+Ongaonga+Hawke%27s+Bay" target="_blank" rel="noopener">Leave us a review</a>
+      <a class="btn btn-accent" href="https://www.google.com/search?q=fmsilvi+ltd+forestry+pruning+planting+thining+Ongaonga#lrd=0xae1670086a961203:0xdcbaac6176e60625,3" target="_blank" rel="noopener">Leave us a review</a>
     </div>
   </section>
 
@@ -852,19 +852,21 @@ footer{background:var(--ink);border-top:1px solid var(--line-inv);padding:56px 0
 
   /* stars */
   var starSvg = '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>';
-  document.querySelectorAll('.stars').forEach(function(el){ el.innerHTML = starSvg.repeat(5); });
+  function paintStars(el, n){ el.innerHTML = starSvg.repeat(n) + starSvg.replace('<svg', '<svg style="opacity:.25"').repeat(5 - n); }
+  document.querySelectorAll('.stars').forEach(function(el){ paintStars(el, +(el.dataset.stars || 5)); });
 
   /* hero review rotation (same data as review cards) */
   var quotes = [
-    { t: 'The crew planted 8,000 seedlings for us over winter. Rows are straight and they turned up every day they said they would.', n: 'Hamish R. · Waipukurau' },
-    { t: 'Booked them for thin to waste on an old shelter block. Straight answers on price, and the job matched the quote.', n: 'Grant M. · Tikokino' },
-    { t: 'Pruned our woodlot in a day and a half. Good price, tidy cuts, and no mess left behind on the tracks.', n: 'Jill T. · Waipawa' }
+    { t: 'Amazing crew great to work with really hard working', n: 'Qaeef Shaheed · Google review', s: 5 },
+    { t: 'Amazing service', n: 'Kritesh Kant · Google review', s: 5 },
+    { t: 'Good crew to deal with', n: 'Reece Roberts · Google review', s: 4 }
   ];
   var qi = 0;
   var qEl = document.getElementById('heroQuote');
   var cEl = document.getElementById('heroCite');
   var box = document.querySelector('.hero-review .quote-box');
-  function setQuote(i){ qEl.textContent = '"' + quotes[i].t + '"'; cEl.textContent = quotes[i].n; }
+  var hStars = document.querySelector('.hero-review .stars');
+  function setQuote(i){ qEl.textContent = '"' + quotes[i].t + '"'; cEl.textContent = quotes[i].n; paintStars(hStars, quotes[i].s); }
   setQuote(0);
   if (!reduced){
     setInterval(function(){
